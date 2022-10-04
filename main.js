@@ -44,7 +44,7 @@ function init(){
     document.body.appendChild(torlesGomb);
 
     document.body.appendChild(lista2);    
-    
+    document.getElementById('resultCalories').textContent = "összes bevitt kalória: ";
 }
 
 function listaTorles(){
@@ -55,29 +55,88 @@ function listaTorles(){
 
 function burgerHozzaad(){
     let elem = document.createElement('li');
-    let s = burgerCalorie.toString();
-    elem.innerHTML = 'hamburger (<i>' + s + '</i>)';
+
+    let szovegSpan = document.createElement('span');
+    let kaloriaSpan = document.createElement('span');
+    let bezaroJelSpan = document.createElement('span');
+    let btn = document.createElement('button');
+
+    szovegSpan.textContent = 'hamburger (';
+    kaloriaSpan.textContent = burgerCalorie.toString();
+    kaloriaSpan.style.fontStyle = 'italic';
+    bezaroJelSpan.textContent = ') ';
+    btn.textContent = "X";
+    btn.addEventListener('click', torlesGombNyomas);
+
+    function torlesGombNyomas(){
+        lista2.removeChild(elem);
+        calorieUpdate(-burgerCalorie);
+    }
+    
+    elem.appendChild(szovegSpan);
+    elem.appendChild(kaloriaSpan);
+    elem.appendChild(bezaroJelSpan);
+    elem.appendChild(btn);
     lista2.appendChild(elem);
     calorieUpdate(burgerCalorie);
 }
 function krumpliHozzad(){
     let elem = document.createElement('li');
-    let s = friesCalorie.toString();
-    elem.innerHTML = 'hasábburgonya (<i>' + s + '</i>)';
+
+    let szovegSpan = document.createElement('span');
+    let kaloriaSpan = document.createElement('span');
+    let bezaroJelSpan = document.createElement('span');
+    let btn = document.createElement('button');
+
+    szovegSpan.textContent = 'hasábburgonya (';
+    kaloriaSpan.textContent = friesCalorie.toString();
+    kaloriaSpan.style.fontStyle = 'italic';
+    bezaroJelSpan.textContent = ') ';
+    btn.textContent = "X";
+    btn.addEventListener('click', torlesGombNyomas);
+
+    function torlesGombNyomas(){
+        lista2.removeChild(elem);
+        calorieUpdate(-friesCalorie);
+    }
+    
+    elem.appendChild(szovegSpan);
+    elem.appendChild(kaloriaSpan);
+    elem.appendChild(bezaroJelSpan);
+    elem.appendChild(btn);
     lista2.appendChild(elem);
     calorieUpdate(friesCalorie);
 }
 function colaHozzaad(){
     let elem = document.createElement('li');
-    let s = cokeCalorie.toString();
-    elem.innerHTML = 'kóla (<i>' + s + '</i>)';
+
+    let szovegSpan = document.createElement('span');
+    let kaloriaSpan = document.createElement('span');
+    let bezaroJelSpan = document.createElement('span');
+    let btn = document.createElement('button');
+
+    szovegSpan.textContent = 'coca-cola (';
+    kaloriaSpan.textContent = cokeCalorie.toString();
+    kaloriaSpan.style.fontStyle = 'italic';
+    bezaroJelSpan.textContent = ') ';
+    btn.textContent = "X";
+    btn.addEventListener('click', torlesGombNyomas);
+
+    function torlesGombNyomas(){
+        lista2.removeChild(elem);
+        calorieUpdate(-cokeCalorie);
+    }
+    
+    elem.appendChild(szovegSpan);
+    elem.appendChild(kaloriaSpan);
+    elem.appendChild(bezaroJelSpan);
+    elem.appendChild(btn);
     lista2.appendChild(elem);
     calorieUpdate(cokeCalorie);
 }
 
 function calorieUpdate(calorie){
     totalCalories += calorie;
-    console.log(totalCalories);
     document.getElementById('resultCalories').textContent = "összes bevitt kalória: " + totalCalories;
 }
 
